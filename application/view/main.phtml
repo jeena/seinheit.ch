@@ -10,6 +10,9 @@
 		</title>
 		<link href='http://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="<?php echo $this->base ?>/style/main.css" />
+		<?php if(Access::isLogged()) { ?> 
+		<link rel="stylesheet" type="text/css" href="<?php echo $this->base ?>/style/admin.css" />
+		<?php } ?>
 		<link rel="shortcut icon" href="<?php echo $this->base ?>/img/favicon.ico" type="image/x-icon" />
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="Description" content="" />
