@@ -34,7 +34,10 @@ class AdminController extends Katharsis_Controller_Abstract
 
 	private function getPassword()
 	{
-		$admin_ini = parse_ini_file('config/admin.ini');
+		$path = 'config/admin.ini';
+		if(!is_readable($path)) die($path . " not found");
+
+		$admin_ini = parse_ini_file($path);
 		$password = $admin_ini["password"];
 
 		return $password;
