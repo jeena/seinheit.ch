@@ -1,0 +1,11 @@
+<div id="admin">
+<form action="<?php echo $this->base ?>/admin/login" method="post">
+	<dl>
+		<dt>Admin</dt>
+		<dd>
+			<?php if($this->_getParam('wrongpassword')) echo 'passwort falsch<br/>' ?>	
+			<input type="password" name="password" value="" /> <input type="submit" name="login" value="login" />
+		</dd>
+	</dl>
+</form>
+</div>

@@ -1,0 +1,56 @@
+<div id="admin">
+<h3>Navigation/Menüpunkt bearbeiten</h3>
+
+<form action="<?php echo $this->base ?>/adminNavigation/save"method="post">
+	<input type="hidden" name="id" value="<?php if($this->item['id']) echo $this->item['id'] ?>" />
+	<dl>
+		<dt>Aktiv</dt>
+		<dd>
+			<input type="checkbox" name="active" <?php if($this->item['active']) echo 'checked="checked"' ?> />
+		</dd>
+	</dl>
+	<dl>
+		<dt>Menüpunkttyp</dt>
+		<dd>
+			<select name="parentId">
+				<option value="0">Hauptpunkt</option>
+				<?php foreach($this->mainItems as $item): ?>
+					<option <?php if($item['id'] == $this->item['parent_id'] || $item['id'] == $this->_getParam('parentId')) echo 'selected="selected"' ?> value="<?php echo $item['id'] ?>">Unterpunkt von <?php echo $item['name'] ?></option>
+				<?php endforeach ?>
+			</select>
+		</dd>
+	</dl>
+	<dl>
+		<dt>Titel</dt>
+		<dd>
+			<input type="text" name="name" value="<?php echo $this->item['name'] ?>"/>
+		</dd>
+	</dl>
+	<dl>
+		<dt>Url</dt>
+		<dd>
+			<table>
+				
+				<tr>
+					<td>
+<?php foreach($this->sites['defaults'] as $key => $site): ?>
+	<input type="radio" checked="checked" name="url" id="sitedefault_<?php echo $key ?>" value="<?php echo $site ?>"/><label for="sitedefault_<?php echo $key ?>"><?php echo $site ?></label><br/> 
+<?php endforeach ?>
+					</td>
+					<td>
+<?php foreach($this->sites['pages'] as $key => $site): ?>
+	<input type="radio" name="url" id="sitepage_<?php echo $key ?>" value="<?php echo $site ?>"/><label for="sitepage_<?php echo $key ?>"><?php echo $site ?></label><br/> 
+<?php endforeach ?>
+					</td>
+					<td>
+						<input type="radio" name="url" id="sitenew" value="-external-"/><label for="sitenew">Externe Adresse:</label><br/>
+						<input type="text" name="external" value="http://"/>
+				</tr>
+			</table>
+		</dd>
+	</dl>
+	<p>
+		<input type="submit" name="save" value="speichern" />
+	</p>
+</form>
+</div>

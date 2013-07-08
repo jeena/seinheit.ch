@@ -1,0 +1,34 @@
+<div id="admin">
+<h3>Produkt-Bild hinzufügen</h3>
+<form action="<?php echo $this->base ?>/adminUpload/process" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="productId" value="<?php echo $this->_getParam('productId') ?>"/>
+	<dl>
+		<dt>
+			Produkt
+		</dt>
+		<dd>
+			<?php echo $this->item['name'] ?>
+		</dd>
+	</dl>
+	<dl>
+		<dt>
+			Klein
+		</dt>
+		<dd>
+			<input type="file" value="" name="small" size="32" />
+		</dd>
+	</dl>
+	<dl>
+		<dt>
+			Groß
+		</dt>
+		<dd>
+			<input type="file" value="" name="big" size="32" />
+			
+		</dd>
+	</dl>
+	<p>
+		<input type="submit" value="Hochladen" />
+	</p>
+</form>
+</div>

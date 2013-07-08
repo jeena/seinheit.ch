@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>Swiss Didgeridoo Artwork</title>
+	<link rel="stylesheet" type="text/css" href="/style/main.css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="Description" content="Swiss Didgeridoo Artwork - Online Shop" />
+	</head>
+<body>
+
+<div style="padding: 10px;">
+<h3 style="color:white; padding: 3px;background-color: #CB3829;">Bild Hochladen</h3>
+<p><form method="post" enctype="multipart/form-data">
+ <input name="myfile" type="file" size="50" maxlength="100000" accept="text/*"> <input type="submit" value="Go" />
+</form>
+</p>
+<h3 style="color:white; padding: 3px;background-color: #CB3829;">Bild Ausw&auml;hlen</h3>
+
+<ul style="padding-left: 16px; list-style-type: none">
+<?php foreach($this->files as $file): ?>
+<li>
+   <a href="javascript: void(0);" onclick="window.open('/img/page/<?php echo $file; ?>', 'Bild', 'width=400,height=300,status=yes,scrollbars=yes,resizable=yes');"><img src="/img/page/<?php echo $file; ?>" width="50" height="50" /></a>
+   <a href="javascript: void(0);" onclick="opener.document.getElementById('src').value='/img/page/<?php echo $file; ?>'; window.close();" >Einf&uuml;gen</a> 
+   <a href="?delete=<?php echo $file ?>" style="float:right; margin-top: 35px">L&ouml;schen</a> 
+   
+</li>
+<?php endforeach; ?>
+</ul>
+
+</div>
+</body>
+</html>

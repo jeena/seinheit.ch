@@ -1,0 +1,111 @@
+<div id="admin">
+<h3>Navigation Bearbeiten</h3>
+<table>
+	<tr>
+		<th>
+			Aktiv
+		</th>
+		<th>
+			Name
+		</th>
+		<th colspan="7">
+			Link
+		</th>
+	</tr>
+<?php $o=0; foreach($this->list as $parent): $i=0; ?>
+	<tr>
+		<td>
+			<?php if($parent['active']) echo 'Ja'; else echo 'Nein'; ?>
+		</td>
+		<td>
+			<?php echo $parent['name'] ?>
+		</td>
+		<td>
+			<?php echo Navigation::buildLink($this->base, $parent, true); ?>
+		</td>
+		<td>
+			<?php if($o!=0): ?>
+			<a href="<?php echo $this->base ?>/adminNavigation/move/direction/up/id/<?php echo $parent['id'] ?>">
+				<img src="<?php echo $this->base ?>/img/leafs/arrow_up.png" alt="Nach oben verschieben" title="Nach oben verschieben"/>
+			</a>
+			<?php endif ?>
+		</td>
+		<td>
+			<?php if($o<count($this->list)-1): ?>
+			<a href="<?php echo $this->base ?>/adminNavigation/move/direction/down/id/<?php echo $parent['id'] ?>">
+				<img src="<?php echo $this->base ?>/img/leafs/arrow_down.png" alt="Nach unten verschieben" title="Nach unten verschieben" />
+			</a>
+			<?php endif ?>
+		</td>
+		<td>
+			<a href="<?php echo $this->base ?>/adminNavigation/delete/id/<?php echo $parent['id'] ?>">
+				<img src="<?php echo $this->base ?>/img/leafs/delete.png"  alt="Löschen" title="Löschen" />
+			</a>
+		</td>
+		<td>
+			<a href="<?php echo $this->base ?>/adminNavigation/edit/parentId/<?php echo $parent['id'] ?>">
+				<img src="<?php echo $this->base ?>/img/leafs/addSub.png"  alt="Unterpunkt hinzufügen" title="Unterpunkt hinzufügen" />
+			</a>
+		</td>
+		<td>
+			<a href="<?php echo $this->base ?>/adminNavigation/edit/id/<?php echo $parent['id'] ?>">
+				<img src="<?php echo $this->base ?>/img/leafs/change.png"  alt="Ändern" title="Ändern" />
+			</a>
+		</td>
+		<td>
+			<a href="<?php echo Navigation::buildLink($this->base, $parent, false); ?>">
+				<img src="<?php echo $this->base ?>/img/leafs/preview.png"  alt="Vorschau" title="Vorschau" />
+			</a>
+		</td>
+	</tr>
+	<?php foreach($parent['children'] as $child): ?>
+		<tr class="sub">
+			<td>
+				<?php if($child['active']) echo 'Ja'; else echo 'Nein'; ?>
+			</td>
+			<td>
+				<?php echo $child['name'] ?>
+			</td>
+			<td>
+				<?php echo Navigation::buildLink($this->base, $child, true); ?>
+			</td>
+			<td>
+				<?php if($i!=0): ?>
+				<a href="<?php echo $this->base ?>/adminNavigation/move/direction/up/id/<?php echo $child['id'] ?>">
+					<img src="<?php echo $this->base ?>/img/leafs/arrow_up.png" alt="Nach oben verschieben" title="Nach oben verschieben"/>
+				</a>
+				<?php endif ?>
+			</td>
+			<td>
+				<?php if($i<count($parent['children'])-1): ?>
+				<a href="<?php echo $this->base ?>/adminNavigation/move/direction/down/id/<?php echo $child['id'] ?>">
+					<img src="<?php echo $this->base ?>/img/leafs/arrow_down.png" alt="Nach unten verschieben" title="Nach unten verschieben" />
+				</a>
+				<?php endif ?>
+			</td>
+			<td>
+				<a href="<?php echo $this->base ?>/adminNavigation/delete/id/<?php echo $child['id'] ?>">
+					<img src="<?php echo $this->base ?>/img/leafs/delete.png"  alt="Löschen" title="Löschen" />
+				</a>
+			</td>
+			<td>
+				&nbsp;
+			</td>
+			<td>
+				<a href="<?php echo $this->base ?>/adminNavigation/edit/id/<?php echo $child['id'] ?>">
+					<img src="<?php echo $this->base ?>/img/leafs/change.png"  alt="Ändern" title="Ändern" />
+				</a>
+			</td>
+			<td>
+				<a href="<?php echo Navigation::buildLink($this->base, $child, false); ?>">
+					<img src="<?php echo $this->base ?>/img/leafs/preview.png"  alt="Vorschau" title="Vorschau" />
+				</a>
+			</td>
+		</tr>
+	<?php $i++; endforeach ?>
+<?php $o++; endforeach ?>
+</table>
+<p>
+	<a href="<?php echo $this->base ?>/adminNavigation/edit">Neuen Hauptpunkt anlegen</a>
+</p>
+</div>

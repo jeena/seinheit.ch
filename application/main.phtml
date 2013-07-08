@@ -1,0 +1,94 @@
+<html>
+<head>
+        <title>Swiss Didgeridoo Artwork - Schweizer Holz Didgeridoo bester Qualität</title>
+        <link rel="stylesheet" type="text/css" href="<?php echo $this->base ?>/style/main.css" />
+        <link rel="shortcut icon" href="<?php echo $this->base ?>/img/leafs/favicon.ico" type="image/x-icon" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="Description" content="Bei uns findest du alles rund ums Didgeridoo - Qualitäts Instrumente aus einheimischen Hölzern - Taschen - Mundstücke - Musik - Konzertkalender - Unterricht -Therapie - Clapstick - Trommel Reparaturen - Diverse Links" />
+        <meta name="keywords" content="Didgeridoo, Didjeridoo, Yidaki, Clapstick, Mundstück, Holzblasinstrument, Australisches Instrument, Didgeridoo Reparaturen, Didgeridoo Konzert, Trommel Reparaturen, Didgeridoo Unterricht, Zirkularatmung, Rhythmus Didgeridoo" />
+        <?php if($this->autoScriptFile): ?>
+        <script type="text/javascript" src="<?php echo $this->autoScriptFile ?>"></script>
+        <?php endif ?>
+</head>
+<body style="background-image: url('<?php echo $this->base ?>/img/leafs/background<?php echo rand(1,3); ?>.png')">
+
+<?php if($this->notices): ?>
+<ul class="notices">
+        <?php foreach($this->notices as $notice): ?>
+        <li><?php echo $notice ?></li>
+        <?php endforeach ?>
+</ul>
+<?php endif ?>
+
+<a href="<?php echo $this->base ?>/page/home" title="zur Startseite" id="logo">&nbsp;</a>
+<h2><?php echo Navigation::getSubtitle(); ?></h2>
+<h1><?php echo Navigation::getTitle(); ?></h1>
+<div id="head">
+<ul id="navigation">
+<?php foreach($this->mainNavigationItems as $item): ?>
+        <li <?php if($item['id'] == $this->activeMenuItem) echo 'class="active"'?>>
+                <div>
+                        <a href="<?php echo $this->base ?>/<?php echo $item['controller'] ?>/<?php echo $item['action'] ?>"><?php echo $item['name'] ?></a>
+                </div>
+        </li>
+<?php endforeach ?>
+</ul>
+<?php if(Access::isLogged()): ?>
+<ul id="adminNavigation">
+        <li>
+                Admin Bereich
+        </li>
+        <li>
+                <a href="<?php echo $this->base ?>/adminOrder">Bestellungen</a>
+        </li>
+        <li>
+                <a href="<?php echo $this->base ?>/adminNavigation">Navigationen</a>
+        </li>
+        <li>
+                <a href="<?php echo $this->base ?>/adminPage">Pages</a>
+        </li>
+        <li>
+                <a href="<?php echo $this->base ?>/adminShop">Shop</a>
+        </li>
+        <li>
+                <a href="<?php echo $this->base ?>/adminNews">News</a>
+        </li>
+        <li>
+                <a href="<?php echo $this->base ?>/adminEvent">Events</a>
+        </li>
+        <li>
+                <a href="<?php echo $this->base ?>/admin/logout">Ausloggen</a>
+        </li>
+</ul>
+<?php endif ?>
+
+</div>
+
+<div id="topStage">
+<?php if($this->subNavigationItems): ?>
+<ul id="subNavigation">
+<?php foreach($this->subNavigationItems as $subitem): ?>
+        <li <?php if($this->activeSubMenuItem == $subitem['id']) echo 'class="active"'; ?>>
+                <div>
+                        <?php if($subitem['link']): ?>
+                                <a href="<?php echo $subitem['link'] ?>"><?php echo $subitem['name'] ?></a>
+                        <?php else: ?>
+                                <a href="<?php echo $this->base ?>/<?php echo $subitem['controller'] ?>/<?php echo $subitem['action'] ?>"><?php echo $subitem['name'] ?></a>
+                        <?php endif ?>
+                </div>
+        </li>
+<?php endforeach ?>
+</ul>
+<?php else: ?>
+&nbsp;
+<?php endif ?>
+</div>
+
+
+
+
+<div id="stage">
+<?php echo $this->stageContent ?>
+</div>
+</body>
+</html>

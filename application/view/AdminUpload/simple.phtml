@@ -1,0 +1,17 @@
+<div id="admin">
+<h3>Hochladen</h3>
+<form action="<?php echo $this->base ?>/adminUpload/process" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="productId" value="<?php echo $this->_getParam('productId') ?>"/>
+	<dl>
+		<dt>
+			Datei
+		</dt>
+		<dd>
+			<input type="file" value="" name="myfile" size="32"/>
+		</dd>
+	</dl>
+	<p>
+		<input type="submit" value="Hochladen" />
+	</p>
+</form>
+</div>
