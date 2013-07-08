@@ -12,7 +12,7 @@ class AdminController extends Katharsis_Controller_Abstract
 	
 	public function loginAction()
 	{
-		if($this->_getParam('password') == 'holzmitloch')
+		if($this->_getParam('password') == '')
 		{
 			$_SESSION['logged'] = 1;
 			$this->_location('index');
