@@ -39,4 +39,4 @@ CREATE TABLE `page` (
 --
 
 INSERT INTO `page` (`title`, `url`, `content`) VALUES ("Home", "home", "Wilkommen bei Katharsis");
-INSERT INTO `navigation` (`name`, `controller`, `action`) VALUES ("Home", "page", "home");
+INSERT INTO `navigation` (`name`, `link`) VALUES ("Home", "/");
