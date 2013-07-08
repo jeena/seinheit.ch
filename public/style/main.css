@@ -49,11 +49,12 @@ h2 + h3 {
 	background-color: white;
 }
 
-#top {
+#logo {
 	padding-top: 70px;
+    display: block;
 }
 
-#top a img {
+#logo img {
     width: 400px;
 } 
 
