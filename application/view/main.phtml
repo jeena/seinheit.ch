@@ -46,7 +46,11 @@
 			<ul id="navi">
 			<?php foreach($this->mainNavigationItems as $item): ?>
 				<li <?php if($item['id'] == $this->activeMenuItem) echo 'class="active"'?>>
-					<a href="<?php echo $this->base ?>/<?php echo $item['controller'] ?>/<?php echo $item['action'] ?>"><?php echo $item['name'] ?></a>
+					<?php if($item['link']): ?>
+						<a href="<?php echo $item['link'] ?>"><?php echo $item['name'] ?></a>
+					<?php else: ?>
+						<a href="<?php echo $this->base ?>/<?php echo $item['controller'] ?>/<?php echo $item['action'] ?>"><?php echo $item['name'] ?></a>
+					<?php endif ?>
 				</li>
 			<?php endforeach ?>
 			</ul>
