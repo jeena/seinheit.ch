@@ -1,0 +1,101 @@
+
+#admin dd {
+        font-size: 1em;
+        line-height: 1.6em;
+}
+
+label {
+        padding: 3px;
+}
+
+.textfield {
+        width: 300px;
+}
+
+input, textarea {
+        border: 1px solid #4F100A;
+        padding: 2px;
+}
+
+#admin dl {
+        margin: 15px 0;
+}
+
+#admin dt {
+        font-weight: bold;
+        float: left;
+        width: 40px;
+}
+
+#admin dd {
+        position: relative;
+        left: 75px;
+        padding: 0 10px;
+}
+
+
+.right {
+        float: right;
+}
+
+table {
+        border-collapse: collapse;
+        font-size: 1em;
+        background-color: #95281d;
+}
+
+td, th {
+        border: 1px dotted #46140f;
+        padding: 5px;
+        color: #dfbe9d;
+        vertical-align: top;
+}
+
+th, thead td{
+        background-color: #722119;
+        font-weight: bold;
+        text-align: left;
+        color: #f1d6bc;
+        border-style: dotted;
+}
+
+.unsichtbare_tabelle, .unsichtbare_tabelle tr, .unsichtbare_tabelle tbody, .unsichtbare_tabelle td, .unsichtbare_tabelle th {
+        background-color: transparent;
+        border: 0;
+        color: white;
+}
+
+textarea {
+        font-family: arial;
+        font-size: 1em;
+        width: 650px;
+        height: 350px;
+}
+
+.smallnavigate {
+         width: 155px;
+         float: right;
+}
+
+.smallnavigate a {
+        text-decoration: none;
+        color: #EF871F;
+        font-size: 12pt;
+}
+.smallnavigate span {
+         line-height: 23px;
+}
+.smallnavigate a:hover {
+         text-decoration: underline;
+}
+.smallnavigate img {
+         height: 23px;
+         widht: 14px;
+}
+.box {
+         width: 200px;
+         float: left;
+         margin-left: 25px;
+         text-align: center;
+         margin-top: 20px;
+}
