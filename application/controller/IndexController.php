@@ -27,8 +27,7 @@ class IndexController extends Katharsis_Controller_Abstract
 	 */
 	public function indexAction()
 	{
-		$controller = new PageController();
-		$controller->homeAction();
+		// will be overwritten by IndexRedirect Plugin
 	}
 	
 	/**
