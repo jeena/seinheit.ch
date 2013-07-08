@@ -19,7 +19,7 @@ Katharsis_Controller_Plugin::registerPlugin(new DidgeridooArtwork_Controller_Plu
 Katharsis_Controller_Plugin::registerPlugin(new Katharsis_Controller_Plugin_Autorender());
 
 Katharsis_Controller_Plugin::registerPlugin(new DidgeridooArtwork_Controller_Plugin_Access());
-//Katharsis_Controller_Plugin::registerPlugin(new DidgeridooArtwork_Controller_Plugin_Navigation());
+Katharsis_Controller_Plugin::registerPlugin(new DidgeridooArtwork_Controller_Plugin_Navigation());
 
 
 try {

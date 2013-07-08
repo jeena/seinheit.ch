@@ -9,6 +9,11 @@
  */
 abstract class Katharsis_Controller_Plugin_Abstract
 {
+	public function __construct()
+	{
+		$this->_con = Katharsis_DatabaseConnector::getConnection();
+	}
+	
 	/**
 	 * Overwrite this method, if you want something to be processed 
 	 * _before_ the controller is called

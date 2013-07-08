@@ -339,7 +339,7 @@ class Katharsis_Db5
 		if($field === null)
 		{
 			$result = $this->_fetch($statement, self::FETCHMODE_ARRAY, true);
-			return $result[0];
+			return isset($result[0]) ? $result[0] : null;
 		} else
 		{
 			$result = $this->_fetch($statement, self::FETCHMODE_ASSOC, true);
