@@ -1,25 +1,8 @@
 <?php
-/**
- * Database Connector
- * controls database connections
- *
- * @author Karl Pannek <info@katharsis.in>
- * @version 0.5.2
- * @package Katharsis
- */
 class Katharsis_DatabaseConnector
 {
-	/**
-	 * @var array
-	 */
 	public static $_conns = array();
 
-	/**
-	 * Reading ini file information and connecting
-	 * 
-	 * @param string $requestedName
-	 * @return Katharsis_Db5
-	 */
 	protected static function connect($requestedName = null)
 	{
 		$ini = parse_ini_file('config/database.config.ini', true);
@@ -33,13 +16,7 @@ class Katharsis_DatabaseConnector
 		}
 	}
 
-	/**
-	 * Connects to all connections in config file
-	 * 
-	 * @param string $requestedName
-	 * @return void
-	 */
-	public static function connectAll()
+	public static function connectAll($requestedName = null)
 	{
 		$groups = parse_ini_file('config/database.config.ini',  true);
 
@@ -52,14 +29,11 @@ class Katharsis_DatabaseConnector
 		}
 	}
 
-	/**
-	 * Calling Katharsis Db connecting method
-	 * 
-	 * @param string $requestedName
-	 * @return Katharsis_Db5
-	 */
 	protected static function _realConnect($conInformation)
 	{
+		//$con = new PDO('mysql:host=' . $conInformation['host'] . ';dbname=' . $conInformation['database'], $conInformation['user'], $conInformation['password']);
+
+
 		$con = new Katharsis_Db5($conInformation['host'], $conInformation['user'], $conInformation['password'], $conInformation['database']);
 
 		self::$_conns[$conInformation['name']]['connection'] = $con;
@@ -68,12 +42,6 @@ class Katharsis_DatabaseConnector
 		return $con;
 	}
 
-	/**
-	 * Returns specified or default connection
-	 * 
-	 * @param string $requestedName
-	 * @return Katharsis_Db5
-	 */
 	public static function getConnection($requestedName = null)
 	{
 		if($requestedName === null)
@@ -96,13 +64,6 @@ class Katharsis_DatabaseConnector
 		}
 	}
 
-	/**
-	 * Returns an array of connection information
-	 * 
-	 * @param array $ini
-	 * @param string $requestedName
-	 * @return array
-	 */
 	protected static function _selectConnection($ini, $requestedName = null)
 	{
 		foreach($ini as $name => $connectionInfo)
@@ -128,3 +89,4 @@ class Katharsis_DatabaseConnector
 		throw new Katharsis_Exception('Could not find database connection information for "' . $requestedName . '"');
 	}
 }
+?>

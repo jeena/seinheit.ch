@@ -1,22 +1,12 @@
 <?php
 /**
- * Katharsis Database Class
- * A mysql query class, that is based on native php functionality (PHP5)
+ * KatharsisDb5 is a mysql query class, that is based on native php functionality (PHP5)
  *
- * @author Karl Pannek <info@katharsis.in>
- * @version 0.5.2
- * @package Katharsis
+ * @author Karl Pannek
  */
 class Katharsis_Db5
 {
-	/**
-	 * @var string
-	 */
 	const FETCHMODE_ASSOC = 'ASSOC';
-	
-	/**
-	 * @var string
-	 */
 	const FETCHMODE_ARRAY = 'ARRAY';
 
 	/**
@@ -184,7 +174,7 @@ class Katharsis_Db5
 	 */
 	public function connect()
 	{
-		$this->_connection = @mysql_connect(
+		$this->_connection = mysql_connect(
 			$this->getHost(),
 			$this->getUser(),
 			$this->getPassword(),
@@ -281,6 +271,10 @@ class Katharsis_Db5
 			{
 				$value = "'" . mysql_real_escape_string($value, $this->_connection) . "'";
 			}
+			if($value === null)
+			{
+				$value = 'NULL';
+			}
 			$sets[] = "`" . $key . "` = " . $value;
 		}
 
@@ -294,6 +288,13 @@ class Katharsis_Db5
 			$sql .= ' () VALUES () ';
 		}
 
+		return $this->run($sql);
+	}
+	
+	public function simpleDelete($table, $fieldvalue, $fieldname = 'id')
+	{
+		$sql = "DELETE FROM " . $table . " WHERE " . $fieldname . " = :field";
+		$sql = $this->createStatement($sql, array('field' => $fieldvalue));
 		return $this->run($sql);
 	}
 
@@ -334,21 +335,24 @@ class Katharsis_Db5
 		return $this->_fetch($statement, $fetchmode, true);
 	}
 
-	public function fetchField ($statement, $field = null)
+	/**
+	 * Returns a fetched result (One rows)
+	 *
+	 * @param $statement
+	 * @param $fetchmode
+	 * @return array
+	 */
+	public function fetchField ($statement, $field = 0)
 	{
-		if($field === null)
+		if(intval($field) === $field)
 		{
 			$result = $this->_fetch($statement, self::FETCHMODE_ARRAY, true);
-			return isset($result[0]) ? $result[0] : null;
 		} else
 		{
 			$result = $this->_fetch($statement, self::FETCHMODE_ASSOC, true);
-			if(array_key_exists($field, $result))
-			{
-				return $result[$field];
-			}
-			return null;
 		}
+		
+		return array_key_exists($field, $result) ? $result[$field] : null;
 	}
 
 	/**
@@ -363,9 +367,9 @@ class Katharsis_Db5
 		$file = $file[count($file)-1];
 
 
-		echo '<pre style="margin: 10px; padding: 0px; background-color: #eee">';
+		echo '<pre style="position: absolute; z-index: 10000; margin: 10px; padding: 0px; background-color: #eee">';
 
-		echo '<table style="width: 100%"><tr><td style="font-size: 0.9em; padding-left: 10px; color: #aaa;">QUERY ANALYSIS | from ' . $file . ' on line ' . $debug[0]['line'] . '</td>';
+		echo '<table style="width: 1100px"><tr><td style="font-size: 0.9em; padding-left: 10px; color: #aaa;">QUERY ANALYSIS | from ' . $file . ' on line ' . $debug[0]['line'] . '</td>';
 		echo '<td align="right" style="padding: 5px;">';
 		echo '<button style="background-color: #ddd; border: 0px solid #bbb;" onclick="parentNode.parentNode.parentNode.parentNode.parentNode.style.display=\'none\';">X</button></td></tr></table>';
 		echo '<div style="margin: 1px; background-color: #FFFCE6; padding: 5px; color: #3F0808;">';
@@ -408,6 +412,12 @@ class Katharsis_Db5
 	{
 		foreach($values as $key => $value)
 		{
+			if($value === null)
+			{
+				$statement = str_replace(":" . $key, 'NULL', $statement);
+				continue;
+			}
+			
 			$wasString = false;
 			if(is_string($value))
 			{
@@ -434,6 +444,18 @@ class Katharsis_Db5
 
 		return $statement;
 	}
+	
+	public function getEmptyColumnArray($table)
+	{
+		$sql = $this->createStatement("SHOW COLUMNS FROM " . $table);
+		$columns = $this->fetchAll($sql);
+		$result = array();
+		foreach($columns as $column)
+		{
+			$result[$column['Field']] = $column['Default'];
+		}
+		return $result;
+	}
 
 	/**
 	 * Last primary key that has been inserted
@@ -446,7 +468,7 @@ class Katharsis_Db5
 	}
 
 	/**
-	 * Returns the number of rows from the last executed statement
+	 * Returns the number of rows fro m the last executed statement
 	 *
 	 * @return int
 	 */
@@ -486,17 +508,19 @@ class Katharsis_Db5
 		}
 		if($result = mysql_query($statement, $this->_connection))
 		{
-			$this->_lastStatement = $statement;
 			$this->_lastRowCount = mysql_affected_rows($this->_connection);
 		}
+		$this->_lastStatement = $statement;
 
 		if(mysql_error($this->_connection))
 		{
 			$this->_lastError['number'] = mysql_errno($this->_connection);
 			$this->_lastError['message'] = mysql_error($this->_connection);
+			$this->analyseLast();
 		} else
 		{
 			$this->_lastError = array();
+			$this->_lastResult = " ";
 		}
 
 		return $result;
@@ -566,47 +590,25 @@ class Katharsis_Db5
 /**
  * KatharsisDb exception spicification
  *
- * @author Karl Pannek <info@katharsis.in>
- * @version 0.5.2
- * @package Katharsis
+ * @author Karl Pannek
  */
 class KatharsisDb5_Exception extends Exception {}
 
 /**
  * KatharsisDb Result Set
  *
- * @author Karl Pannek <info@katharsis.in>
- * @version 0.5.2
- * @package Katharsis
-
+ * @author Karl Pannek
  */
 class KatharsisDb5_ResultSet
 {
-	/**
-	 * @var Mysql Resource
-	 */
 	private $_resultSet;
-	
-	/**
-	 * @var Katharsis_Db5
-	 */
 	private $_connection;
 
-	/**
-	 * Sets class attributes
-	 * 
-	 * @param Mysql Resource $resultSet
-	 */
 	public function __construct($resultSet)
 	{
 		$this->_resultSet = $resultSet;
 	}
 
-	/**
-	 * Fetching next row
-	 * 
-	 * @param Mysql Resource $resultSet
-	 */
 	public function fetchNext ($fetchmode = Katharsis_Db5::FETCHMODE_ASSOC)
 	{
 		switch ($fetchmode)
@@ -624,4 +626,6 @@ class KatharsisDb5_ResultSet
 				break;
 		}
 	}
+
 }
+?>

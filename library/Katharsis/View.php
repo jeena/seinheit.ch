@@ -1,29 +1,9 @@
 <?php
-/**
- * Katharsis View
- * Controls anything related to the display level
- *
- * @author Karl Pannek <info@katharsis.in>
- * @version 0.5.2
- * @package Katharsis
- */
 class Katharsis_View
 {
-	/**
-	 * @var Katharsis_View
-	 */
 	protected static $_instance = null;
-	
-	/**
-	 * @var array
-	 */
-	protected $_params = array();
+	protected $_items = array();
 
-	/**
-	 * Singleton. Returns the same instance every time
-	 * 
-	 * @return Katharsis_View
-	 */
 	public static function getInstance()
 	{
 		if(self::$_instance === null)
@@ -33,49 +13,30 @@ class Katharsis_View
 		return self::$_instance;
 	}
 
-	/**
-	 * Sets base application path
-	 *
-	 * @return void
-	 */
 	protected function __construct()
 	{
 		$base = preg_replace('/(.+)\/[^\/]+/', '\1', $_SERVER['SCRIPT_NAME']);
-        $this->_params['base'] = $base != $_SERVER['SCRIPT_NAME'] ? $base : '';
+        $this->_items['base'] = $base != $_SERVER['SCRIPT_NAME'] ? $base : '';
 	}
 
-	/**
-	 * Magical get method, gets specific param
-	 *
-	 * @param string $name
-	 * @return string
-	 */
 	public function __get($name)
 	{
-		if(array_key_exists($name, $this->_params))
+		if(array_key_exists($name, $this->_items))
 		{
-			return $this->_params[$name];
+			if(is_array($this->_items[$name]))
+			{
+				return (array) $this->_items[$name];
+			}
+			return $this->_items[$name];
 		}
 		return null;
 	}
 
-	/**
-	 * Magical set method, sets specific param
-	 *
-	 * @param string name
-	 * @param string value
-	 */
 	public function __set($name, $value)
 	{
-		$this->_params[$name] = $value;
+		$this->_items[$name] = $value;
 	}
 
-	/**
-	 * Template rendering method
-	 * 
-	 * @param string $template
-	 * @return string
-	 */
 	public function render($template)
 	{
 		ob_start();
@@ -89,13 +50,24 @@ class Katharsis_View
 		return $output;
 	}
 
-	/**
-	 * Sets Request params into View params
-	 * 
-	 * @return void
-	 */
 	public function requestHook()
 	{
-        $this->_params['params'] = Katharsis_Request::getParams();
+	}
+	
+	public function _getParam($key)
+	{
+		$params = Katharsis_Request::getParams();
+		if(array_key_exists($key,$params))
+		{
+			return $params[$key];
+		}
+		return null;
+	}
+	
+	public function formatDate($date)
+	{
+		$date = explode("-", $date);
+		return $date[2] . '.' . $date[1] . '.' . $date[0]; 
 	}
 }
+?>

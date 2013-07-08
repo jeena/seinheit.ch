@@ -23,6 +23,7 @@ Katharsis_Controller_Plugin::registerPlugin(new DidgeridooArtwork_Controller_Plu
 
 
 try {
+	Katharsis_Bootstrap::init();
 	Katharsis_Bootstrap::run();
 } catch(Exception $e)
 {
