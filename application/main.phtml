@@ -2,7 +2,12 @@
 <html>
 <head>
 		<meta charset="utf-8">
-		<title>Seinheit - <?php echo Navigation::getTitle(); ?></title>
+		<title>
+			Seinheit
+			<?php if(Navigation::getTitle()): ?>
+				- <?php echo Navigation::getTitle(); ?>
+			<?php endif ?>
+		</title>
 		<link href='http://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="<?php echo $this->base ?>/style/main.css" />
 		<link rel="shortcut icon" href="<?php echo $this->base ?>/img/favicon.ico" type="image/x-icon" />
@@ -60,7 +65,7 @@
 		<div id="content">
 			<?php echo $this->stageContent ?>
 		</div>
-		
+
 	</article>
 
 </div>
