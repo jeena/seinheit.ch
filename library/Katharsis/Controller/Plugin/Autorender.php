@@ -15,6 +15,7 @@ class Katharsis_Controller_Plugin_Autorender extends Katharsis_Controller_Plugin
 	 */
 	public function postController()
 	{
+
 		$view = Katharsis_View::getInstance();
 
 		$view->controllerAction = false;
@@ -28,5 +29,8 @@ class Katharsis_Controller_Plugin_Autorender extends Katharsis_Controller_Plugin
 
 		$view = Katharsis_View::getInstance();
 		echo $view->render('main');
+
+		var_dump($view->render('main'));
+		die('');
 	}
 }

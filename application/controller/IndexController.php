@@ -27,8 +27,6 @@ class IndexController extends Katharsis_Controller_Abstract
 	 */
 	public function indexAction()
 	{
-		$this->_view->someVariableName = 'Katharsis';
-		echo $this->_view->render('welcome');
 	}
 	
 	/**
