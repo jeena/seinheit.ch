@@ -4,7 +4,7 @@ class DidgeridooArtwork_Controller_Plugin_Navigation extends Katharsis_Controlle
 	public function preController()
 	{
 		$view = Katharsis_View::getInstance();
-		$sql = "SELECT id, name, controller, action, link FROM navigation WHERE parent_id IS NULL ORDER BY sorting";
+		$sql = "SELECT id, name, controller, action, link FROM navigation WHERE parent_id IS NULL AND active = 1 ORDER BY sorting";
 		$view->mainNavigationItems = $this->_con->fetchAll($sql);
 		
 		$sql = "SELECT id, parent_id, controller, action FROM navigation WHERE (action = :action AND controller = :controller) OR (action IS NULL AND controller = :controller)";

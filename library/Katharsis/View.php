@@ -70,4 +70,3 @@ class Katharsis_View
 		return $date[2] . '.' . $date[1] . '.' . $date[0]; 
 	}
 }
-?>

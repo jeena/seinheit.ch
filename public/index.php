@@ -12,7 +12,6 @@ chdir('..');
 require_once('library/Katharsis/Bootstrap.php');
 Katharsis_Autoload::init();
 
-
 Katharsis_Controller_Plugin::registerPlugin(new DidgeridooArtwork_Controller_Plugin_SetNames());
 Katharsis_Controller_Plugin::registerPlugin(new Katharsis_Controller_Plugin_StartSession());
 Katharsis_Controller_Plugin::registerPlugin(new DidgeridooArtwork_Controller_Plugin_Notice());
@@ -21,7 +20,6 @@ Katharsis_Controller_Plugin::registerPlugin(new Katharsis_Controller_Plugin_Auto
 
 Katharsis_Controller_Plugin::registerPlugin(new DidgeridooArtwork_Controller_Plugin_Access());
 Katharsis_Controller_Plugin::registerPlugin(new DidgeridooArtwork_Controller_Plugin_Navigation());
-
 
 try {
 	Katharsis_Bootstrap::init();

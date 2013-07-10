@@ -26,19 +26,22 @@ class AdminPageController extends Katharsis_Controller_Abstract
 			$type = 'page';
 		}
 
-		$path = getcwd().'/img/' . $type . '/';
+		$path = getcwd().'/public/img/' . $type . '/';
 	
 		if(isset($_FILES['myfile']))
 		{
 			$upload = new Upload();
 			
 			if($type == 'header') {
-				$upload->header($_FILES['myfile']);
+				$imagePath = $upload->header($_FILES['myfile']);
 			} else {
-				$upload->page($_FILES['myfile']);
+				$imagePath = $upload->page($_FILES['myfile']);
 			}
 			
-			echo 'Das Hochladen war erfolgreich.<br><br>';
+			$this->_view->imagePath = $imagePath;
+
+			echo $this->_view->render('AdminPage/uploadsuccess');
+			die();
 		} 
 
 		
@@ -51,7 +54,7 @@ class AdminPageController extends Katharsis_Controller_Abstract
 		}
 
 		$ar = array();
-		if (is_readable($path) && $handle = opendir()) 
+		if (is_readable($path) && $handle = opendir($path)) 
 		{
 		    while (false !== ($file = readdir($handle))) {
 			if(is_dir($file)) continue;
@@ -60,6 +63,7 @@ class AdminPageController extends Katharsis_Controller_Abstract
 			
 		    closedir($handle);
 		}
+		$this->_view->type = $type;
 		$this->_view->files = $ar;
 		echo $this->_view->render('AdminPage/image');
 		
