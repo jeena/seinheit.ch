@@ -1,28 +1,45 @@
 #adminNavigation {
         font-family: verdana;
-        background-color: #90CB93;
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 689px;
+        background: #90CB93;
+        position: fixed;
+        bottom: 0;
+        left: 0;
         list-style-type: none;
         margin: 0;
-        padding: 2px;
-        font-size: 0.8em;
-        width: 725px;
-        * width: 729px;
+        padding: 0 70px;
+        width: 100%;
+        -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+        -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+        box-sizing: border-box;         /* Opera/IE 8+ */
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        border-top: 1px solid #85c188;
+        z-index: 2;
 }
 
 #adminNavigation li {
-        float: left;
-        padding: 0 5px;
+        display: inline-block;
+        margin: -1px 0 0 0;
+        padding: 0;
+}
+
+#adminNavigation li:first-child {
+    padding-right: 1em;
+}
+
+#adminNavigation li:last-child {
+    float: right;
 }
 
 #adminNavigation a {
         color: white;
-        background-color: #416843;
-        padding: 3px 5px;
+        background: #416843;
+        padding: 1em 2em;
         text-decoration: none;
+        display: inline-block;
+}
+
+#adminNavigation a:hover {
+    background: #216849;
 }
 
 
