@@ -1,51 +1,47 @@
 <div id="admin">
 <h3>Page bearbeiten</h3>
 
-<form action="<?php echo $this->base ?>/adminPage/save"method="post">
-        <input type="hidden" name="id" value="<?php echo $this->page['id'] ?>" />
-        <dl>
-                <dt>Aktiv</dt>
-                <dd>
-                        <input type="checkbox" name="active" <?php if($this->page['active']) echo 'checked="checked"' ?> />
-                </dd>
-        </dl>
-        <dl>
-                <dt>Titel</dt>
-                <dd>
-                        <input class="textfield" type="text" name="title" value="<?php echo $this->page['title'] ?>"/>
-                </dd>
-        </dl>
-        <dl>
-                <dt>Untertitel</dt>
-                <dd>
-                        <input class="textfield" type="text" name="subtitle" value="<?php echo $this->page['subtitle'] ?>"/>
-                </dd>
-        </dl>
-        <dl>
-                <dt>Url</dt>
-                <dd>
-                        <input class="textfield" type="text" name="url" value="<?php echo $this->page['url'] ?>"/>
-                </dd>
-        </dl>        
-        <dl>
-                <dt>Headerbild</dt>
-                <dd>
-                        <input class="textfield" type="text" name="header_image" value="<?php echo $this->page['header_image'] ?>"/> 
-                        <a href="javascript: void(0);" onclick="window.open('/adminPage/image/type/header', 'fenster1', 'width=600,height=400,status=yes,scrollbars=yes,resizable=yes');">Auswählen</a>
-                </dd>
-        </dl>
-        <dl>
-                <dt>Inhalt</dt>
-                <dd>
-                        <!-- Gets replaced with TinyMCE, remember HTML in a textarea should be encoded -->
-                        <div>
-                                <textarea id="content" name="content" rows="15" cols="80" style="width: 500px"><?php echo htmlentities($this->page['content']) ?></textarea>
-                        </div>
-
-                </dd>
-        </dl>
-        <p>
-                <input type="submit" name="save" value="speichern" />
-        </p>
+<form action="<?php echo $this->base ?>/adminPage/save" method="post">
+	<div style="display: none"><input type="hidden" name="id" value="<?php echo $this->page['id'] ?>" /></div>
+	<dl>
+		<dt>Aktiv</dt>
+		<dd>
+			<input type="checkbox" name="active" <?php if($this->page['active']) echo 'checked="checked"' ?> />
+		</dd>
+	</dl>
+	<dl>
+		<dt>Titel</dt>
+		<dd>
+			<input class="textfield" type="text" name="title" value="<?php echo $this->page['title'] ?>"/>
+		</dd>
+	</dl>
+	<dl>
+		<dt>Untertitel</dt>
+		<dd>
+			<input class="textfield" type="text" name="subtitle" value="<?php echo $this->page['subtitle'] ?>"/>
+		</dd>
+	</dl>
+	<dl>
+		<dt>Url</dt>
+		<dd>
+			<input class="textfield" type="text" name="url" value="<?php echo $this->page['url'] ?>"/>
+		</dd>
+	</dl>        
+	<dl>
+		<dt>Headerbild</dt>
+		<dd>
+			<input class="textfield" type="text" name="header_image" value="<?php echo $this->page['header_image'] ?>"/> 
+			<a href="javascript: void(0);" onclick="window.open('/adminPage/image/type/header', 'fenster1', 'width=600,height=400,status=yes,scrollbars=yes,resizable=yes');">Auswählen</a>
+		</dd>
+	</dl>
+	<dl>
+		<dt>Inhalt</dt>
+		<dd>
+				<textarea id="content" name="content" rows="15" cols="80"><?php echo htmlentities($this->page['content']) ?></textarea>
+		</dd>
+	</dl>
+	<p>
+		<input type="submit" name="save" value="speichern" />
+	</p>
 </form>
 </div>

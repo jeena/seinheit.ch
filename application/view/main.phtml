@@ -18,7 +18,7 @@
 		<meta name="Description" content="" />
 		<meta name="keywords" content="" />
 </head>
-<body>
+<body<?php if(Access::isLogged()): ?> class="admin"<?php endif ?>>
 
 <div id="container">
 	<header>
@@ -63,6 +63,11 @@
 	</article>
 
 	<footer>
+		<p id="social">
+			<a href="https://www.facebook.com/pages/Naturheilpraxis-SEINHEIT/190046497711632">
+				<img src="<?php echo $this->base ?>/img/facebook-icon.png" alt="SEINHEIT bei Facebook">
+			</a>
+		</p>
 		<p>Naturheilpraxis SEINHEIT. Kinga Pannek, Bahnhofstraße 105, 8620 Wetzikon, Schweiz</p>
 	</footer>
 

@@ -83,78 +83,6 @@ img { max-width: 100%; }
 #stage {
     border-top: 5px solid #90cb93;
 	padding: 50px 0px;
-	background: url("/img/background.gif") no-repeat center 110px ;
-	min-height: 510px;
-}
-
-#imagearea {
-    margin: 0px 0 260px;
-    clear: both;
-
-}
-
-#imagearea #titleimage {
-    border-top: 10px solid #216f85;
-    padding-top: 35%;
-    background-image: url("file://localhost/Users/karlpannek/Dropbox/Kinga%20Praxis%20Fotos/Originale/AR8R8369.JPG");
-    background-size: 1100px;
-    background-size: cover;
-}
-
-
-
-#imagearea #imagelist {
-    padding: 0;
-}
-
-#imagearea #imagelist li {
-    list-style-type: none;
-    display: block;
-    float: left;
-    width: 350px;
-    height: 200px;
-    border: 0px solid black;
-    margin-right: 5px;
-    background-size: 342px;
-    background-size: cover;
-}
-#imagearea #imagelist li p {
-    background-color: #90cb93;
-    height: 20px;
-    margin: 0;
-    padding: 10px;
-    text-align: center;
-    color: white;
-}
-#imagearea .testimonial {
-    background-color: #216f85;
-    margin-right: 0;
-}
-#imagearea .testimonial blockquote {
-    padding: 35px;
-    color: white;
-    background-color: transparent;
-    height: auto;
-    font-style: italic;
-    font-size: 1.2em;
-}
-
-#angebote {
-    float: right;
-    text-align: right;
-}
-
-#angebote a {
-    border: 0;
-    background: none;
-    margin: 10px 0 10px 10px;
-    float: left;
-}
-
-#angebote a img {
-    border: 0;
-    background: white;
-    border: 1px solid #aaa;
 }
 
 p.diagramm {
@@ -164,4 +92,48 @@ p.diagramm {
 
 #stage p.diagramm img {
     float: none;
+}
+
+footer {
+    clear: both;
+    border-top: 3px solid #90CB93;
+}
+
+footer #social {
+    float: right;
+    margin-top: 10px;
+}
+
+.col3 .box {
+    width: 33%;
+    display: inline-block;
+}
+
+.box {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    vertical-align: middle;
+}
+
+.box h2 {
+    background: #90CB93;
+    color: white;
+    font-size: 1em;
+    padding: 0.5em;
+}
+
+.box h2 a {
+    text-decoration: none;
+    color: white;
+}
+
+.box.cite {
+    background: #216f85;
+    color: white;
+    padding: 2em;
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1.9em;
 }
