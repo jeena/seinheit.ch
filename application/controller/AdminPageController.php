@@ -33,12 +33,15 @@ class AdminPageController extends Katharsis_Controller_Abstract
 			$upload = new Upload();
 			
 			if($type == 'header') {
-				$upload->header($_FILES['myfile']);
+				$imagePath = $upload->header($_FILES['myfile']);
 			} else {
-				$upload->page($_FILES['myfile']);
+				$imagePath = $upload->page($_FILES['myfile']);
 			}
 			
-			echo 'Das Hochladen war erfolgreich.<br><br>';
+			$this->_view->imagePath = $imagePath;
+
+			echo $this->_view->render('AdminPage/uploadsuccess');
+			die();
 		} 
 
 		

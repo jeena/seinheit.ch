@@ -8,13 +8,13 @@ class Upload extends Katharsis_Model_Abstract
 
 	public function header($file)
 	{
-		$dir = getcwd() . '/img/header';
+		$dir = getcwd() . '/public/img/header';
 		return $this->_uploadFile(null, $file, $dir);
 	}
 
 	public function page($file)
 	{
-		$dir = getcwd() . '/img/page';
+		$dir = getcwd() . '/public/img/page';
 		return $this->_uploadFile(null, $file, $dir, $file['name'] . '-' . time());
 	}
 	
@@ -22,7 +22,7 @@ class Upload extends Katharsis_Model_Abstract
 	{
 		if($name === null)
 		{
-			$name = $id . '-' . time();
+			$name = time();
 		} 
 		else
 		{
@@ -31,25 +31,37 @@ class Upload extends Katharsis_Model_Abstract
 				$name = $nameparts[0];
 			}
 		} 
-
-		$handle = new Verot_Upload($file);
-		return;
-		$handle->file_new_name_body = $name;
-
-		if ($handle->uploaded) 
-		{
-			$handle->Process($dir);
-			if (!$handle->processed) 
-			{
-				throw new DidgeridooArtwork_Exception('Datei konnte nicht verschoben werden (' . $handle->error . ').');
-			}
-			$handle->Clean();
+ 
+ 		if (!is_dir($dir)) {
+			mkdir($dir);
 		}
-		else
+
+        $typeAccepted = array("image/jpeg", "image/gif", "image/png");
+        if(!in_array($file['type'], $typeAccepted)) {
+        	throw new DidgeridooArtwork_Exception('Hochladen fehlgeschlagen. Dateityp nicht akzeptiert. Nur jpeg, gif und png möglich');
+			return false;
+        }
+
+        $ext = '';
+        switch($file['type']) {
+        	case "image/jpeg":
+        		$ext = '.jpg';
+        		break;
+        	case "image/gif":
+        		$ext = '.gif';
+        		break; 
+        	case "image/png":
+        		$ext = '.png';
+        		break;
+        }
+ 		
+        $fullName = $dir . '/' . $name . $ext;
+
+		if (!move_uploaded_file($file['tmp_name'], $fullName)) 
 		{
-			throw new DidgeridooArtwork_Exception('Datei konnte nicht hochgeladen werden (' . $handle->error . ').');
+			throw new DidgeridooArtwork_Exception('Hochladen fehlgeschlagen. (move_uploaded_file: false)');
+			return false;
 		}
-		$returnName = $handle->file_dst_name;
-		return $returnName;
+		return $fullName;
 	}
 }

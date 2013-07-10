@@ -17,4 +17,3 @@ class Katharsis_Controller_Plugin_Autorender extends Katharsis_Controller_Plugin
 		echo $view->render('main');
 	}
 }
-?>

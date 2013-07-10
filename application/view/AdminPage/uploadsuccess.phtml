@@ -1,0 +1,10 @@
+<h2>Das Hochladen war erfolgreich.</h2>
+
+<script type="text/javascript"> 
+
+opener.document.forms[0].header_image.value = '<?php echo $this->imagePath;?>';
+setTimeout(function() {
+	window.self.close();
+}, 800);
+
+</script>
