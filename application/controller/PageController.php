@@ -15,7 +15,7 @@ class PageController extends Katharsis_Controller_Abstract
 		{
 			$preview = true;
 		}
-		$method = substr($method, 0, -6);
+		$method = substr($method, 0, -6); // remove Action from urlAction
 		$content = $this->_page->render($method, $preview);
 		
 		$content = DidgeridooArtwork_Page_Plugin::render($content);
