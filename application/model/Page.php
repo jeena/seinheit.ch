@@ -5,21 +5,18 @@ class Page extends Katharsis_Model_Abstract
 	{
 	}	
 
-	public function render($url, $preview)
+	public function getIdByUrl($url, $preview = false)
 	{
 		$activeTerm = '';
 		if(!$preview)
 		{
 			$activeTerm = 'AND active = 1';
 		}
-		$sql = $this->_con->createStatement("SELECT * FROM page WHERE url = :url " . $activeTerm, array("url" => $url));
-		if($result = $this->_con->fetchOne($sql))
-		{
-			return $result['content'];
-		}
-		else
-		{
-			throw new DidgeridooArtwork_Exception('Die von Ihnen angeforderte Seite (Page) "' . $url . '" konnte nicht gefunden werden.');
+
+		$sql = $this->_con->createStatement("SELECT id FROM page WHERE url = :url " . $activeTerm, array("url" => $url));
+		
+		if($result = $this->_con->fetchOne($sql)){
+			return $result['id'];
 		}
 	}
 	

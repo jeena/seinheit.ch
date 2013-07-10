@@ -15,11 +15,23 @@ class PageController extends Katharsis_Controller_Abstract
 		{
 			$preview = true;
 		}
-		$method = substr($method, 0, -6);
-		$content = $this->_page->render($method, $preview);
+		$url = substr($method, 0, -6);
 		
-		$content = DidgeridooArtwork_Page_Plugin::render($content);
+		$pageId = $this->_page->getIdByUrl($url);
+
+		if(!$pageId) {
+			throw new DidgeridooArtwork_Exception('Page konnte nicht geladen werden.');
+		}
+
+		$pageData = $this->_page->getPage($pageId);
 		
+		foreach($pageData as $key => $value) {
+			$this->_view->{$key} = $value;
+		}
+		
+		$this->_view->content = DidgeridooArtwork_Page_Plugin::render($this->_view->content);
+		
+		$content = $this->_view->render('page/post');
 		$this->_view->stageContent = $content;
 		echo $this->_view->render('main');
 		die();

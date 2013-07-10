@@ -6,10 +6,10 @@ class Upload extends Katharsis_Model_Abstract
 		
 	}	
 
-	public function header($id, $file)
+	public function header($file)
 	{
 		$dir = getcwd() . '/img/header';
-		return $this->_uploadFile($id, $file, $dir);
+		return $this->_uploadFile(null, $file, $dir);
 	}
 
 	public function page($file)
@@ -33,7 +33,9 @@ class Upload extends Katharsis_Model_Abstract
 		} 
 
 		$handle = new Verot_Upload($file);
+		return;
 		$handle->file_new_name_body = $name;
+
 		if ($handle->uploaded) 
 		{
 			$handle->Process($dir);
