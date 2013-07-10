@@ -55,13 +55,11 @@ class Upload extends Katharsis_Model_Abstract
         		break;
         }
  		
-        $fullName = $dir . '/' . $name . $ext;
-
-		if (!move_uploaded_file($file['tmp_name'], $fullName)) 
+		if (!move_uploaded_file($file['tmp_name'], $dir . '/' . $name . $ext)) 
 		{
 			throw new DidgeridooArtwork_Exception('Hochladen fehlgeschlagen. (move_uploaded_file: false)');
 			return false;
 		}
-		return $fullName;
+		return $name . $ext;
 	}
 }
