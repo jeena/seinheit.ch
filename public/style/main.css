@@ -4,7 +4,6 @@ html, body {
 
 body {
 	background: white;
-
 	font-family: "Trebuchet MS", "Lucida Grande", verdana, arial, georgia;
 	font-size: 1em;
 	margin: 0;
@@ -37,6 +36,8 @@ h2 + h3 {
     margin-top: 0;
     font-weight: bold;
 }
+
+img { max-width: 100%; }
 
 #container {
 	min-width: 750px;
@@ -136,15 +137,6 @@ h2 + h3 {
     height: auto;
     font-style: italic;
     font-size: 1.2em;
-}
-
-#stage img {
-	border: 1px solid #888;
-	background-color: white;
-	padding: 5px;
-    margin: 0 0 1em 1em;
-	float: right;
-    border-radius: 2px;
 }
 
 #angebote {

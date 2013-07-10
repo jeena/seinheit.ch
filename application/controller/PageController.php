@@ -29,10 +29,10 @@ class PageController extends Katharsis_Controller_Abstract
 		foreach($pageData as $key => $value) {
 			$this->_view->{$key} = $value;
 		}
-		
+
 		$this->_view->content = DidgeridooArtwork_Page_Plugin::render($this->_view->content);
 		
-		$content = $this->_view->render('page/post');
+		$content = $this->_view->render('Page/post');
 		$this->_view->stageContent = $content;
 		echo $this->_view->render('main');
 		die();

@@ -59,20 +59,7 @@
 	</header>
 
 	<article id="stage">
-
-    	<?php if($this->headerImage): ?>
-    		<img id="header_image" src="<?php echo $this->headerImage ?>" alt="">
-    	<?php endif ?>
-
-		<h1><?php echo Navigation::getTitle(); ?></h1>
-		<?php if(Navigation::getSubtitle()): ?>
-			<h2><?php echo Navigation::getSubtitle(); ?></h2>
-		<?php endif ?>
-
-		<div id="content">
-			<?php echo $this->stageContent ?>
-		</div>
-
+		<?php echo $this->stageContent ?>
 	</article>
 
 	<footer>
