@@ -1,3 +1,35 @@
+#adminNavigation {
+        font-family: verdana;
+        background-color: #90CB93;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 689px;
+        list-style-type: none;
+        margin: 0;
+        padding: 2px;
+        font-size: 0.8em;
+        width: 725px;
+        * width: 729px;
+}
+
+#adminNavigation li {
+        float: left;
+        padding: 0 5px;
+}
+
+#adminNavigation a {
+        color: white;
+        background-color: #416843;
+        padding: 3px 5px;
+        text-decoration: none;
+}
+
+
+#stage img {
+        background-color: transparent;
+        border: none;
+}
 
 #admin dd {
         font-size: 1em;
@@ -41,22 +73,22 @@ input, textarea {
 table {
         border-collapse: collapse;
         font-size: 1em;
-        background-color: #95281d;
+        background-color: #274729;
 }
 
 td, th {
-        border: 1px dotted #46140f;
+        border: 1px solid #000;
         padding: 5px;
         color: #dfbe9d;
         vertical-align: top;
 }
 
 th, thead td{
-        background-color: #722119;
+        background-color: #416843;
         font-weight: bold;
         text-align: left;
         color: #f1d6bc;
-        border-style: dotted;
+        border-style: solid;
 }
 
 .unsichtbare_tabelle, .unsichtbare_tabelle tr, .unsichtbare_tabelle tbody, .unsichtbare_tabelle td, .unsichtbare_tabelle th {
