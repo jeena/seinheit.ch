@@ -52,7 +52,8 @@ class Page extends Katharsis_Model_Abstract
 			'subtitle' => $params['subtitle'],
 			'url' => $params['url'],
 			'content' => $params['content'],
-			'active' => $params['active']
+			'active' => $params['active'],
+			'header_image' => $params['header_image']
 		);
 	
 		if(isset($params['id']) && is_numeric($params['id']))
@@ -64,7 +65,8 @@ class Page extends Katharsis_Model_Abstract
 					subtitle = :subtitle,
 					url = :url,
 					content = :content,
-					active = :active
+					active = :active,
+					header_image = :header_image
 				WHERE
 					id = :id
 			";
