@@ -20,17 +20,7 @@ class Upload extends Katharsis_Model_Abstract
 	
 	protected function _uploadFile($id, $file, $dir, $name = null)
 	{
-		if($name === null)
-		{
-			$name = time();
-		} 
-		else
-		{
-			if($nameparts = explode(".", $name))
-			{
-				$name = $nameparts[0];
-			}
-		} 
+		$name = time();
  
  		if (!is_dir($dir)) {
 			mkdir($dir);
