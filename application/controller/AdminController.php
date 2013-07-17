@@ -3,7 +3,7 @@ class AdminController extends Katharsis_Controller_Abstract
 {
 	public function indexAction()
 	{
-		if(!Access::isLogged()) $this->_location('gate');
+		if(!Access::isLoggedIn()) $this->_location('gate');
 	}
 	
 	public function gateAction()

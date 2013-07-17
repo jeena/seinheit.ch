@@ -51,8 +51,7 @@ img { max-width: 100%; }
 }
 
 #logo {
-	padding-top: 70px;
-    display: block;
+    float: left;
 }
 
 #logo img {
@@ -60,27 +59,41 @@ img { max-width: 100%; }
 } 
 
 #navi {
+    margin-top: 70px;
     float: right;
-    right: 0px ;
 	list-style-type: none;
-	margin: -47px 0;
     text-align: center;
-    padding: 12px 0;
 }
 
-#navi li {
-    display: inline;
+#navi > li {
+    display: inline-block;
+    position: relative;
 }
 
 #navi li a {
 	color: black;
 	padding: 10px 12px;
     text-decoration: none;
-    background-color: #90cb93;
+    background: #90cb93;
     color: white;
 }
 
+#navi a:hover {
+    background: #84c684;
+}
+
+#navi ul {
+    display: none;
+    position: absolute;
+    text-align: left;
+}
+
+#navi > li:hover ul {
+    display: block;
+}
+
 #stage {
+    clear: both;
     border-top: 5px solid #90cb93;
 	padding: 50px 0px;
 }
