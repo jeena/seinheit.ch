@@ -70,26 +70,45 @@ img { max-width: 100%; }
     position: relative;
 }
 
-#navi li a {
+#navi a {
 	color: black;
-	padding: 10px 12px;
+	padding: 0.5em 0.7em;
     text-decoration: none;
     background: #90cb93;
     color: white;
 }
 
-#navi a:hover {
-    background: #84c684;
+#navi li:hover a {
+    background: #416843;
 }
 
 #navi ul {
     display: none;
     position: absolute;
     text-align: left;
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    top: 1.8em;
+    z-index: 2;
+}
+
+#navi ul a {
+    display: block;
+    background: #416843;
+}
+
+#navi ul a:hover {
+    background: #90cb93;
 }
 
 #navi > li:hover ul {
     display: block;
+}
+
+#navi > li:last-child ul {
+    right: 0;
+    border: red;
 }
 
 #stage {
