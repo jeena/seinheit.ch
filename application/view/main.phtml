@@ -51,6 +51,16 @@
 					<?php else: ?>
 						<a href="<?php echo $this->base ?>/<?php echo $item['controller'] ?>/<?php echo $item['action'] ?>"><?php echo $item['name'] ?></a>
 					<?php endif ?>
+
+					<?php foreach($item['children'] as $child): ?>
+						<li <?php if($child['id'] == $this->activeMenuItem) echo 'class="active"'?>>
+							<?php if($child['link']): ?>
+								<a href="<?php echo $child['link'] ?>"><?php echo $child['name'] ?></a>
+							<?php else: ?>
+								<a href="<?php echo $this->base ?>/<?php echo $child['controller'] ?>/<?php echo $child['action'] ?>"><?php echo $child['name'] ?></a>
+							<?php endif ?>
+						</li>
+					<?php endforeach ?>
 				</li>
 			<?php endforeach ?>
 			</ul>
