@@ -146,6 +146,8 @@ footer #social {
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
     vertical-align: middle;
+    padding-bottom: 0.1em;
+    margin-bottom: 0.1em;
 }
 
 .box h2 {
@@ -153,11 +155,17 @@ footer #social {
     color: white;
     font-size: 1em;
     padding: 0.5em;
+    margin: 0;
 }
 
 .box h2 a {
     text-decoration: none;
     color: white;
+    display: block;
+}
+
+.box img {
+    vertical-align: middle;
 }
 
 .box.cite {
@@ -168,4 +176,41 @@ footer #social {
     font-style: italic;
     font-weight: bold;
     font-size: 1.9em;
+    min-height: 281px;
+    vertical-align: middle;
+}
+
+.col2 {
+    border-top: 1em solid #993533;
+}
+
+.col2 .text {
+    width: 33%;
+    vertical-align: top;
+    float: left;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.col2 .image {
+    width: 66%;
+    vertical-align: top;
+    float: right;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.col2.right .text {
+    float: right;
+}
+
+.col2.right .image {
+    float: right;
+}
+
+.col2 .image p:first-child {
+    margin-top: 0;
+    padding-top: 0;
 }
