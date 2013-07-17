@@ -70,6 +70,11 @@ textarea {
     box-sizing: border-box;
 }
 
+.admin textarea {
+    font-family: "monospace";
+    font-size: 0.8em;
+}
+
 #admin dl {
         margin: 15px 0;
 }
