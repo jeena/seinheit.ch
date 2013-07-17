@@ -1,10 +1,12 @@
-<h2>Das Hochladen war erfolgreich.</h2>
+<script src="<?php echo $this->base ?>/script/admin.js"></script>
 
 <script type="text/javascript"> 
+adminPageInsertImage('<?php echo $this->type; ?>', '<?php echo $this->imagePath;?>');
 
-opener.document.forms[0].header_image.value = '<?php echo $this->imagePath;?>';
 setTimeout(function() {
 	window.self.close();
 }, 800);
 
 </script>
+
+<h2>Das Hochladen war erfolgreich.</h2>

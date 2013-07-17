@@ -25,6 +25,7 @@ class AdminPageController extends Katharsis_Controller_Abstract
 		} else {
 			$type = 'page';
 		}
+		$this->_view->type = $type;
 
 		$path = getcwd().'/public/img/' . $type . '/';
 	
@@ -48,6 +49,7 @@ class AdminPageController extends Katharsis_Controller_Abstract
 		if(isset($_GET['delete']))
 		{
 			$deleteFile = $path . $_GET['delete'];
+			
 			if(file_exists($deleteFile)) {
 				unlink($deleteFile);
 			}
@@ -63,7 +65,7 @@ class AdminPageController extends Katharsis_Controller_Abstract
 			
 		    closedir($handle);
 		}
-		$this->_view->type = $type;
+		
 		$this->_view->files = $ar;
 		echo $this->_view->render('AdminPage/image');
 		
