@@ -1,5 +1,3 @@
 .DS_Store
 config/admin.ini
 config/database.config.ini
-public/img/header
-public/img/page
