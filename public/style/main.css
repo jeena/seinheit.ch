@@ -153,11 +153,16 @@ footer #social {
     color: white;
     font-size: 1em;
     padding: 0.5em;
+    margin: 0;
 }
 
 .box h2 a {
     text-decoration: none;
     color: white;
+}
+
+.box img {
+    vertical-align: middle;
 }
 
 .box.cite {
@@ -168,4 +173,6 @@ footer #social {
     font-style: italic;
     font-weight: bold;
     font-size: 1.9em;
+    height: 281px;
+    vertical-align: middle;
 }
