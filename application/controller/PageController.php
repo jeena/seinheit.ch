@@ -11,7 +11,7 @@ class PageController extends Katharsis_Controller_Abstract
 	public function __call($method, $args) 
 	{
 		$preview = false;
-		if(array_key_exists('preview', $this->_getAllParams()) && Access::isLogged())
+		if(array_key_exists('preview', $this->_getAllParams()) && Access::isLoggedIn())
 		{
 			$preview = true;
 		}

@@ -7,7 +7,7 @@ class DidgeridooArtwork_Controller_Plugin_Access extends Katharsis_Controller_Pl
 		{
 			$firstFive = substr(Katharsis_Request::getControllerName(), 0, 5);
 			
-			if($firstFive == 'admin' && !Access::isLogged())
+			if($firstFive == 'admin' && !Access::isLoggedIn())
 			{
 				Katharsis_Request::setControllerName('admin');
 				Katharsis_Request::setActionName('index');

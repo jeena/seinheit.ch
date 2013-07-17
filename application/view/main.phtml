@@ -10,7 +10,7 @@
 		</title>
 		<link href='http://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="<?php echo $this->base ?>/style/main.css" />
-		<?php if(Access::isLogged()) { ?> 
+		<?php if(Access::isLoggedIn()) { ?> 
 		<link rel="stylesheet" type="text/css" href="<?php echo $this->base ?>/style/admin.css" />
 		<?php } ?>
 		<link rel="shortcut icon" href="<?php echo $this->base ?>/img/favicon.ico" type="image/x-icon" />
@@ -18,12 +18,12 @@
 		<meta name="Description" content="" />
 		<meta name="keywords" content="" />
 </head>
-<body<?php if(Access::isLogged()): ?> class="admin"<?php endif ?>>
+<body<?php if(Access::isLoggedIn()): ?> class="admin"<?php endif ?>>
 
 <div id="container">
 	<header>
 
-		<?php if(Access::isLogged()): ?>
+		<?php if(Access::isLoggedIn()): ?>
 			<ul id="adminNavigation">
 				<li>Admin Bereich</li>
 				<li><a href="<?php echo $this->base ?>/adminNavigation">Navigationen</a></li>
@@ -34,9 +34,9 @@
 
 		<?php if($this->notices): ?>
 			<ul class="notices">
-				<?php foreach($this->notices as $notice): ?>
+			<?php foreach($this->notices as $notice): ?>
 				<li><?php echo $notice ?></li>
-				<?php endforeach ?>
+			<?php endforeach ?>
 			</ul>
 		<?php endif ?>
 
@@ -45,22 +45,26 @@
 
 			<ul id="navi">
 			<?php foreach($this->mainNavigationItems as $item): ?>
-				<li <?php if($item['id'] == $this->activeMenuItem) echo 'class="active"'?>>
+				<li<?php if($item['id'] == $this->activeMenuItem) echo ' class="active"'?>>
 					<?php if($item['link']): ?>
 						<a href="<?php echo $item['link'] ?>"><?php echo $item['name'] ?></a>
 					<?php else: ?>
 						<a href="<?php echo $this->base ?>/<?php echo $item['controller'] ?>/<?php echo $item['action'] ?>"><?php echo $item['name'] ?></a>
 					<?php endif ?>
 
-					<?php foreach($item['children'] as $child): ?>
-						<li <?php if($child['id'] == $this->activeMenuItem) echo 'class="active"'?>>
-							<?php if($child['link']): ?>
-								<a href="<?php echo $child['link'] ?>"><?php echo $child['name'] ?></a>
-							<?php else: ?>
-								<a href="<?php echo $this->base ?>/<?php echo $child['controller'] ?>/<?php echo $child['action'] ?>"><?php echo $child['name'] ?></a>
-							<?php endif ?>
-						</li>
-					<?php endforeach ?>
+					<?php if(count($item['children']) > 0): ?>
+						<ul>
+						<?php foreach($item['children'] as $child): ?>
+							<li<?php if($child['id'] == $this->activeSubMenuItem) echo ' class="active"'?>>
+								<?php if($child['link']): ?>
+									<a href="<?php echo $child['link'] ?>"><?php echo $child['name'] ?></a>
+								<?php else: ?>
+									<a href="<?php echo $this->base ?>/<?php echo $child['controller'] ?>/<?php echo $child['action'] ?>"><?php echo $child['name'] ?></a>
+								<?php endif ?>
+							</li>
+						<?php endforeach ?>
+						</ul>
+					<?php endif ?>
 				</li>
 			<?php endforeach ?>
 			</ul>

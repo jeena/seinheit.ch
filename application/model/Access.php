@@ -5,7 +5,7 @@ class Access extends Katharsis_Model_Abstract
 	{
 	}	
 
-	public static function isLogged()
+	public static function isLoggedIn()
 	{
 		if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1)
 		{
@@ -14,4 +14,3 @@ class Access extends Katharsis_Model_Abstract
 		return false;
 	}
 }
-?>
