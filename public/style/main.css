@@ -282,3 +282,8 @@ footer #social {
 .col4 .col:last-child {
     padding-right: 0;
 }
+
+.col4 h2 {
+    font-size: 1em;
+    padding: 0.3em 1em;
+}
