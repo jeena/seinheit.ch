@@ -61,7 +61,7 @@ img { max-width: 100%; }
 } 
 
 #navi {
-    margin-top: 70px;
+    margin-top: 80px;
     float: right;
 	list-style-type: none;
     text-align: center;
@@ -127,6 +127,10 @@ img { max-width: 100%; }
     visibility: hidden;
     line-height: 0;
     height: 0;
+}
+
+#header_image {
+    vertical-align: middle;
 }
 
 p.diagramm {
