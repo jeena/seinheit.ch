@@ -159,6 +159,7 @@ p.diagramm {
 footer {
     clear: both;
     border-top: 5px solid #90CB93;
+    color: #616363;
 }
 
 footer #social {
