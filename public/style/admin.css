@@ -71,8 +71,7 @@ textarea {
 }
 
 .admin textarea {
-    font-family: "monospace";
-    font-size: 0.8em;
+    font-family: monospace;
 }
 
 #admin dl {
