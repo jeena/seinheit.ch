@@ -106,12 +106,13 @@ ul {
     z-index: 2;
 }
 
-#navi ul a {
+#navi li:hover ul a {
     display: block;
     background: #416843;
+    background: rgba(65, 104, 67, 0.8);
 }
 
-#navi ul a:hover {
+#navi li:hover ul a:hover {
     background: #90cb93;
 }
 
