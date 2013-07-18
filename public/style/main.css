@@ -5,9 +5,9 @@ html, body {
 body {
 	background: white;
 	font-family: "Trebuchet MS", "Lucida Grande", verdana, arial, georgia;
-	font-size: 1em;
+	font-size: 0.9em;
 	margin: 0;
-	padding: 20px 70px;
+	padding: 20px 10%;
     line-height: 1.4;
 }
 
@@ -17,6 +17,8 @@ a {
 
 h1 {
     margin-bottom: 0;
+    font-weight: normal;
+    font-size: 2em;
 }
 
 h1 + h2 {
@@ -113,8 +115,18 @@ img { max-width: 100%; }
 
 #stage {
     clear: both;
-    border-top: 5px solid #90cb93;
-	padding: 50px 0px;
+    border-top: 3px solid #90cb93;
+	padding: 2.5em 0 1.5em 0;
+    display: inline-block;
+}
+
+#stage:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
 }
 
 p.diagramm {
@@ -128,7 +140,7 @@ p.diagramm {
 
 footer {
     clear: both;
-    border-top: 3px solid #90CB93;
+    border-top: 5px solid #90CB93;
 }
 
 footer #social {
@@ -136,9 +148,12 @@ footer #social {
     margin-top: 10px;
 }
 
+.col3 {
+    display: table-row;
+}
+
 .col3 .box {
-    width: 33%;
-    display: inline-block;
+    display: table;
 }
 
 .box {
@@ -175,13 +190,13 @@ footer #social {
     text-align: center;
     font-style: italic;
     font-weight: bold;
-    font-size: 1.9em;
-    min-height: 281px;
+    font-size: 2em;
+    min-height: 278px;
     vertical-align: middle;
 }
 
 .col2 {
-    border-top: 1em solid #993533;
+    border-top: 5px solid #993533;
 }
 
 .col2 .text {
