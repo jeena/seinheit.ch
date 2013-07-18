@@ -84,7 +84,7 @@ class AdminPageController extends Katharsis_Controller_Abstract
 
 		$this->_page->save($params);
 		DidgeridooArtwork_Notice::add('Page wurde erfolgreich gespeichert!');
-		$this->_location('index');
+		$this->_location($this->_getParam('url'), 'page');
 	}
 	
 	public function deleteAction()
