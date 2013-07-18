@@ -9,6 +9,7 @@ body {
 	margin: 0;
 	padding: 20px 10%;
     line-height: 1.4;
+    color: #3d3f3f;
 }
 
 a {
@@ -122,6 +123,7 @@ ul {
     clear: both;
     border-top: 3px solid #90cb93;
 	padding: 2.5em 0 1.5em 0;
+    line-height: 1.7;
 }
 
 #stage:before,
@@ -137,6 +139,12 @@ ul {
     vertical-align: middle;
     display: block;
     margin-bottom: 2em;
+}
+
+#stage small {
+    color: #616363;
+    line-height: 1.4;
+    display: block;
 }
 
 p.diagramm {
@@ -163,19 +171,16 @@ footer #social {
 }
 
 .col3 .col {
-    width: 33.333%;
+    width: 33%;
     float: left;
-    text-align: center;
     padding: 0 0.2em;
 }
 
 .col3 .col:first-child {
-    margin-left: -0.5em;
     margin-right: 0.5em;
 }
 
 .col3 .col:last-child {
-    margin-right: -0.5em;
     float: right;
 }
 
