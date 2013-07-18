@@ -29,6 +29,9 @@
 				<li>Admin Bereich</li>
 				<li><a href="<?php echo $this->base ?>/adminNavigation">Navigationen</a></li>
 				<li><a href="<?php echo $this->base ?>/adminPage">Pages</a></li>
+				<?php if(Katharsis_Request::getControllerName() == 'page'): ?>
+					<li><a href="<?php echo $this->base ?>/adminPage/edit/pageId/<?php echo $this->id; ?>">Page Editieren</a></li>
+				<?php endif ?>
 				<li><a href="<?php echo $this->base ?>/admin/logout">Ausloggen</a></li>
 			</ul>
 		<?php endif ?>
