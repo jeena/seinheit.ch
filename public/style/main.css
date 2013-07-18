@@ -205,28 +205,34 @@ footer #social {
     border-top: 5px solid #993533;
 }
 
-.col2 .col:first-child {
-    width: 33%;
-    vertical-align: top;
-    float: left;
+.col {
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;         /* Opera/IE 8+ */
+    box-sizing: border-box;         /* Opera/IE 8+ */    
+}
+
+.col2 .col:first-child {
+    float: left;
+    width: 50%;
 }
 
 .col2 .col:last-child {
-    width: 66%;
-    vertical-align: top;
     float: right;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;         /* Opera/IE 8+ */
+    width: 50%;
+}
+
+.col2.left .col:first-child {
+    width: 33%;
+}
+
+.col2.left .col:last-child {
+    width: 66%;
 }
 
 .col2.right .col:first-child {
-    float: right;
+    width: 66%;
 }
 
 .col2.right .col:last-child {
-    float: right;
+    width: 33%;
 }
