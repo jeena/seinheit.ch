@@ -121,7 +121,7 @@ ul {
 #stage {
     clear: both;
     border-top: 3px solid #90cb93;
-	padding: 2.5em 0 2em 0;
+	padding: 2.5em 0 1.5em 0;
 }
 
 #stage:before,
@@ -136,7 +136,7 @@ ul {
 #header_image {
     vertical-align: middle;
     display: block;
-    margin-bottom: 2.5em;
+    margin-bottom: 2em;
 }
 
 p.diagramm {
@@ -188,6 +188,7 @@ footer #social {
     color: white;
     font-size: 1em;
     padding: 0.5em 1em;
+    text-align: center;
 }
 
 .box h2 a {
