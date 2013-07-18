@@ -165,17 +165,22 @@ footer #social {
 .col3 .col {
     width: 33.333%;
     float: left;
-    padding-right: 1em;
+    text-align: center;
+    padding: 0 0.2em;
+}
+
+.col3 .col:first-child {
+    margin-left: -0.5em;
+    margin-right: 0.5em;
 }
 
 .col3 .col:last-child {
-    padding-right: 0;
+    margin-right: -0.5em;
+    float: right;
 }
 
 .box {
     vertical-align: top;
-    padding-bottom: 0.1em;
-    margin-bottom: 0.1em;
 }
 
 .box .content {
@@ -201,16 +206,8 @@ footer #social {
     vertical-align: middle;
 }
 
-.box.cite {
+.box.cite h2 {
     background: #216f85;
-    color: white;
-    padding: 2em;
-    text-align: center;
-    font-style: italic;
-    font-weight: bold;
-    font-size: 2em;
-    min-height: 276px;
-    vertical-align: middle;
 }
 
 .col2.line, .col3.line {
