@@ -160,10 +160,12 @@ footer #social {
 .col3 .col {
     width: 33%;
     float: left;
+    padding-right: 1em;
 }
 
 .col3 .col:last-child {
-
+    float: right;
+    padding-right: 0;
 }
 
 .box {
