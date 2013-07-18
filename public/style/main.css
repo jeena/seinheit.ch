@@ -157,9 +157,13 @@ footer #social {
     clear: both;
 }
 
-.col3 .box {
+.col3 .col {
     width: 33%;
-    display: inline-block;
+    float: left;
+}
+
+.col3 .col:last-child {
+
 }
 
 .box {
@@ -214,11 +218,13 @@ footer #social {
 .col2 .col:first-child {
     float: left;
     width: 50%;
+    padding-right: 0.5em;
 }
 
 .col2 .col:last-child {
     float: right;
     width: 50%;
+    padding-left: 0.5em;
 }
 
 .col2.left .col:first-child {
