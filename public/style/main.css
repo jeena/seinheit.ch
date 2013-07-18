@@ -166,6 +166,10 @@ p.diagramm {
     float: none;
 }
 
+#stage h2 + p {
+    margin-top: 0.5em;
+}
+
 footer {
     clear: both;
     border-top: 5px solid #90CB93;
