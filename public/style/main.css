@@ -182,8 +182,10 @@ footer #social {
     margin-top: 10px;
 }
 
-.col1, .col2, .col3, .col4 { clear: both; margin-bottom: 1.5em; }
+.col1, .col2, .col3, .col4 { clear: both; margin-bottom: 1.5em; padding-top: 2em; }
 .col1.line, .col2.line, .col3.line, .col4.line { border-top: 5px solid #993533; }
+.col > *:first-child { margin-top: 0; padding-top: 0; }
+.col > h2:first-child { margin-top: -0.25em; }
 
 .col {
     -webkit-box-sizing: border-box;
