@@ -92,7 +92,7 @@ ul {
 }
 
 #navi li:hover a {
-    background: #416843;
+    background: #59af5e;
 }
 
 #navi ul {
@@ -108,8 +108,8 @@ ul {
 
 #navi li:hover ul a {
     display: block;
-    background: #416843;
-    background: rgba(65, 104, 67, 0.8);
+    background: #59af5e;
+    background: rgba(89, 175, 94, 0.85);
 }
 
 #navi li:hover ul a:hover {
