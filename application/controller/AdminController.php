@@ -27,7 +27,7 @@ class AdminController extends Katharsis_Controller_Abstract
 	public function logoutAction()
 	{
 		$_SESSION['logged'] = 0;
-		$this->_location('gate');
+		$this->_location('index', 'index');
 	}
 
 	// Private
