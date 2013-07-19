@@ -108,8 +108,8 @@ ul {
 
 #navi li:hover ul a {
     display: block;
-    background: #59af5e;
-    background: rgba(89, 175, 94, 0.85);
+    background: #4b934f;
+    background: rgba(75, 147, 79, 0.8);
 }
 
 #navi li:hover ul a:hover {
