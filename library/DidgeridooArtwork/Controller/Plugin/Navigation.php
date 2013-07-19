@@ -8,7 +8,6 @@ class DidgeridooArtwork_Controller_Plugin_Navigation extends Katharsis_Controlle
 		$navigation = new Navigation();
 		$view->mainNavigationItems = $navigation->getAllItems();
 
-
 		/*
 		$sql = "SELECT id, name, controller, action, link FROM navigation WHERE parent_id IS NULL AND active = 1 ORDER BY sorting";
 		$view->mainNavigationItems = $this->_con->fetchAll($sql);
