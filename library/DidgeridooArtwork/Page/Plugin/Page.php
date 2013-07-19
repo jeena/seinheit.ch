@@ -3,6 +3,6 @@
 {
 	public function render($pageName)
 	{
-		return $this->_view->base . "/page/" . $pageName;
+		return $this->_view->base . "/" . $pageName;
 	}
 }
