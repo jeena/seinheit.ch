@@ -242,16 +242,18 @@ footer #social {
     box-sizing: border-box;
 }
 
-.col2 .col:first-child {
+.col2 .col {
+    width: 48%;
     float: left;
-    width: 50%;
-    padding-right: 0.5em;
+    margin-right: 4%;
+}
+
+.col2 .col:first-child {
+
 }
 
 .col2 .col:last-child {
-    float: right;
-    width: 50%;
-    padding-left: 0.5em;
+    margin-right: 0;
 }
 
 .col2.left .col:first-child {
