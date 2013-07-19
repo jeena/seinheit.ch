@@ -8,7 +8,7 @@ class Navigation extends Katharsis_Model_Abstract
 	public function getAllItems()
 	{		
 		$tidyResult = array();
-		$result = $this->_con->fetchAll("SELECT * FROM navigation WHERE parent_id IS NULL ORDER BY sorting");
+		$result = $this->_con->fetchAll("SELECT * FROM navigation WHERE parent_id IS NULL AND active = 1 ORDER BY sorting");
 		foreach($result as $item)
 		{
 			$subSet = array();
@@ -23,7 +23,7 @@ class Navigation extends Katharsis_Model_Abstract
 	
 	public function getMainItems()
 	{		
-		return $this->_con->fetchAll("SELECT id, name FROM navigation WHERE parent_id IS NULL ORDER BY sorting");
+		return $this->_con->fetchAll("SELECT id, name FROM navigation WHERE parent_id IS NULL  AND active = 1 ORDER BY sorting");
 	}
 	
 	public function getItem($id)
@@ -230,12 +230,14 @@ class Navigation extends Katharsis_Model_Abstract
 				 	controller = :controller,
 				 	action = :action,
 				 	link = :link,
-				 	parent_id = parent_id,
+				 	parent_id = :parent_id,
 				 	active = :active
 				WHERE
 					id = :id
 			";
+			
 			$sql = $this->_con->createStatement($sql, $values);
+			
 			$this->_con->run($sql);
 		} 
 		else
