@@ -102,9 +102,18 @@ ul {
     list-style-type: none;
     margin-left: 0;
     padding-left: 0;
-    top: 1.8em;
+    top: 1.7em;
     z-index: 2;
 }
+
+#navi ul li {
+    border-top: 1px solid #91c993;
+}
+
+#navi ul li:first-child {
+    /*border-top: 0;*/
+}
+
 
 #navi li:hover ul a {
     display: block;
