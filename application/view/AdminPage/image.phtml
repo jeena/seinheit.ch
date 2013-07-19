@@ -1,31 +1,39 @@
 <html>
 <head>
-	<title>Seinheit</title>
-	<link rel="stylesheet" type="text/css" href="/style/main.css" />
+	<title><?php echo ucfirst($this->type) ?> Bilder - Seinheit</title>
+	<link rel="stylesheet" type="text/css" href="<?php echo $this->base ?>/style/popup.css" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<script src="<?php echo $this->base ?>/script/admin.js"></script>
 </head>
 <body>
 
-<div style="padding: 10px;">
-<h3 style="color:white; padding: 3px;background-color: #CB3829;">Bild Hochladen</h3>
-<p><form method="post" enctype="multipart/form-data">
- <input name="myfile" type="file" size="50" maxlength="100000"> <input type="submit" value="Go" />
-</form>
-</p>
-<h3 style="color:white; padding: 3px;background-color: #CB3829;">Bild Ausw&auml;hlen</h3>
+	<h1>Bild Hochladen</h1>
+	<form method="post" enctype="multipart/form-data">
+		<p>
+			<input name="myfile" type="file" size="50" maxlength="100000">
+			<input type="submit" value="Hochladen" />
+		</p>
+	</form>
 
-<ul style="padding-left: 16px; list-style-type: none">
+	<hr>
+
+	<h1>Bild Ausw&auml;hlen</h1>
+	<table>
 <?php foreach($this->files as $file): ?>
-<li>
-   <a href="javascript: void(0);" onclick="window.open('/img/<?php echo $this->type; ?>/<?php echo $file; ?>', 'Bild', 'width=500,height=400,status=yes,scrollbars=yes,resizable=yes');"><img src="/img/<?php echo $this->type; ?>/<?php echo $file; ?>" width="50" height="50" /></a>
-   <a href="javascript: void(0);" onclick="adminPageInsertImage('<?php echo $this->type; ?>', '<?php echo $file; ?>'); window.close();" >Einf&uuml;gen</a>
-   <a href="?delete=<?php echo $file ?>" style="float:right; margin-top: 35px">L&ouml;schen</a> 
-   
-</li>
+		<tr>
+			<td width="50%">
+				<a href="javascript: void(0);" onclick="window.open('<?php echo "{$this->base}/img/{$this->type}/{$file}" ?>', 'Bild', 'width=500,height=400,status=yes,scrollbars=yes,resizable=yes');">
+					<img src="<?php echo "{$this->base}/img/{$this->type}/{$file}" ?>" >
+				</a>
+			</td>
+			<td>
+				<a href="javascript: void(0);" onclick="adminPageInsertImage(<?php echo "'{$this->type}', '{$file}'" ?>); window.close();" >Einf&uuml;gen</a>
+				<br>
+				<a href="?delete=<?php echo $file ?>">L&ouml;schen</a>
+			</td>
+		</tr>
 <?php endforeach; ?>
-</ul>
+	</table>
 
-</div>
 </body>
 </html>
