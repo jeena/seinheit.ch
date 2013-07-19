@@ -5,8 +5,7 @@ function adminPageInsertImage(type, img) {
 	} else {
 		var editor = opener.myCodeMirror;
 		var img = '<img src="{@image ' + img + '}" alt="">';
-		var pos = editor.getCursor() // or {line , ch };
-		var tok = editor.getTokenAt(pos);
+		var pos = editor.getCursor();
 		editor.replaceRange(img, pos);
 	}
 }
