@@ -3,9 +3,13 @@ class Local_Controller_Plugin_PageRewrite extends Katharsis_Controller_Plugin_Ab
 {
 	public function preController()
 	{
-		$page = Katharsis_Request::getControllerName();
+		$controller = Katharsis_Request::getControllerName();
 
-		if(substr($page, 0, 5) === 'admin') {
+		if($controller === 'page') {
+			return;
+		}
+
+		if(substr($controller, 0, 5) === 'admin') {
 			return;
 		}
 
@@ -14,11 +18,11 @@ class Local_Controller_Plugin_PageRewrite extends Katharsis_Controller_Plugin_Ab
 			$defaultSites = explode(", ", Katharsis_Registry::getInstance()->defaults['sites']);
 		}
 
-		if(in_array($page, $defaultSites)) {
+		if(in_array($controller, $defaultSites)) {
 			return;
 		}
 
 		Katharsis_Request::setControllerName('page');
-		Katharsis_Request::setActionName($page);
+		Katharsis_Request::setActionName($controller);
 	}
 }
