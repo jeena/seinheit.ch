@@ -30,13 +30,16 @@
 		<dt>Url</dt>
 		<dd>
 			<table>
-				
+<?php 
+// Wenn hier echte Controller hinzukommen sollen, einfach in der defaults.config.ini unter sites eintragen
+if(!empty($this->sites['defaults'])): ?>
 				<tr>
 					<td>
 <?php foreach($this->sites['defaults'] as $key => $site): ?>
 	<input type="radio" checked="checked" name="url" id="sitedefault_<?php echo $key ?>" value="<?php echo $site ?>"/><label for="sitedefault_<?php echo $key ?>"><?php echo $site ?></label><br/> 
 <?php endforeach ?>
 					</td>
+<?php endif; ?>
 					<td>
 <?php foreach($this->sites['pages'] as $key => $site): ?>
 	<input type="radio" name="url" id="sitepage_<?php echo $key ?>" value="<?php echo $site ?>"/><label for="sitepage_<?php echo $key ?>"><?php echo $site ?></label><br/> 

@@ -202,10 +202,15 @@ class Navigation extends Katharsis_Model_Abstract
 			$site = 'page/' . $site['url'];
 		}
 		$sites = array(
-			'defaults' => explode(", ", Katharsis_Registry::getInstance()->defaults['sites']),
+			'defaults' => array(),
 			'pages' => $sites
 		);
 		
+		if(isset(Katharsis_Registry::getInstance()->defaults['sites'])){
+			$sites['defaults'] = explode(", ", Katharsis_Registry::getInstance()->defaults['sites']);
+		}
+		
+
 		return $sites;
 	}
 	
