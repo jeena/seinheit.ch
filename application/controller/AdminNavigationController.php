@@ -10,7 +10,7 @@ class AdminNavigationController extends Katharsis_Controller_Abstract
 	
 	public function indexAction()
 	{
-		$this->_view->list = $this->_navi->getAllItems();
+		$this->_view->list = $this->_navi->getAllItems(false);
 	}
 	
 	public function editAction()

@@ -5,10 +5,12 @@ class Navigation extends Katharsis_Model_Abstract
 	{
 	}
 	
-	public function getAllItems()
+	public function getAllItems($onlyActive = true)
 	{		
 		$tidyResult = array();
-		$result = $this->_con->fetchAll("SELECT * FROM navigation WHERE parent_id IS NULL AND active = 1 ORDER BY sorting");
+		$activityStatement = $onlyActive ? "AND active = 1" : "";
+		
+		$result = $this->_con->fetchAll("SELECT * FROM navigation WHERE parent_id IS NULL " . $activityStatement . " ORDER BY sorting");
 		foreach($result as $item)
 		{
 			$subSet = array();
