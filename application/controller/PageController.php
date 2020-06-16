@@ -17,7 +17,7 @@ class PageController extends Katharsis_Controller_Abstract
 		}
 
 		$url = substr($method, 0, -6); // remove Action from urlAction
-		
+
 		$pageId = $this->_page->getIdByUrl($url, $preview);
 
 		if(!$pageId) {

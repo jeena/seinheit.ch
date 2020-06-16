@@ -119,7 +119,7 @@ class Katharsis_Db5
 	public function setDatabase($value)
 	{
 		$this->_database = $value;
-		$this->_selectDatabase();
+		// $this->_selectDatabase();
 	}
 
 	/**
@@ -174,11 +174,11 @@ class Katharsis_Db5
 	 */
 	public function connect()
 	{
-		$this->_connection = mysql_connect(
+		$this->_connection = mysqli_connect(
 			$this->getHost(),
 			$this->getUser(),
 			$this->getPassword(),
-			true
+			$this->getDatabase()
 		);
 
 		if(!$this->_connection)
@@ -186,7 +186,7 @@ class Katharsis_Db5
 			throw new KatharsisDb5_Exception('Could not connect to "' . $this->getHost() . '" with user "' . $this->getUser() . '".');
 		}
 
-		$this->_selectDatabase();
+		// $this->_selectDatabase();
 	}
 
 	/**
@@ -196,7 +196,7 @@ class Katharsis_Db5
 	public function disconnect()
 	{
 		$this->_connection = null;
-		return (bool) mysql_close($this->_connection);
+		return (bool) mysqli_close($this->_connection);
 	}
 
 /**
@@ -269,7 +269,7 @@ class Katharsis_Db5
 		{
 			if(is_string($value))
 			{
-				$value = "'" . mysql_real_escape_string($value, $this->_connection) . "'";
+				$value = "'" . mysqli_real_escape_string($value, $this->_connection) . "'";
 			}
 			if($value === null)
 			{
@@ -307,7 +307,7 @@ class Katharsis_Db5
 	public function count ($statement)
 	{
 		$result = $this->_execute($statement);
-		$this->_lastRowCount = mysql_num_rows($result);
+		$this->_lastRowCount = mysqli_num_rows($result);
 		return $this->_lastRowCount;
 	}
 
@@ -426,10 +426,10 @@ class Katharsis_Db5
 
 			if($this->_connection !== null)
 			{
-				$value = mysql_real_escape_string($value);
+				$value =  mysqli_real_escape_string($this->_connection, $value);
 			} else
 			{
-				$value = mysql_escape_string($value);
+				$value = mysqli_escape_string($this->_connection, $value);
 			}
 
 			// if string, or a integer, but wanting to request via LIKE
@@ -464,7 +464,7 @@ class Katharsis_Db5
 	 */
 	public function lastInsertId ()
 	{
-		return mysql_insert_id($this->_connection);
+		return mysqli_insert_id($this->_connection);
 	}
 
 	/**
@@ -487,7 +487,7 @@ class Katharsis_Db5
 	{
 		if($this->isConnected() && $this->getDatabase() !== null)
 		{
-			if(!mysql_select_db($this->getDatabase(), $this->_connection))
+			if(!mysqli_select_db($this->getDatabase(), $this->_connection))
 			{
 				throw new KatharsisDb5_Exception('Could not select database "' . $this->getDatabase() . '".');
 			}
@@ -506,16 +506,16 @@ class Katharsis_Db5
 		{
 			throw new KatharsisDb5_Exception("Not connected to database.");
 		}
-		if($result = mysql_query($statement, $this->_connection))
+		if($result = mysqli_query($this->_connection, $statement))
 		{
-			$this->_lastRowCount = mysql_affected_rows($this->_connection);
+			$this->_lastRowCount = mysqli_affected_rows($this->_connection);
 		}
 		$this->_lastStatement = $statement;
 
-		if(mysql_error($this->_connection))
+		if(mysqli_error($this->_connection))
 		{
-			$this->_lastError['number'] = mysql_errno($this->_connection);
-			$this->_lastError['message'] = mysql_error($this->_connection);
+			$this->_lastError['number'] = mysqli_errno($this->_connection);
+			$this->_lastError['message'] = mysqli_error($this->_connection);
 			$this->analyseLast();
 		} else
 		{
@@ -549,7 +549,7 @@ class Katharsis_Db5
 		switch($fetchmode)
 		{
 			case self::FETCHMODE_ASSOC:
-				while($row = mysql_fetch_assoc($result))
+				while($row = mysqli_fetch_assoc($result))
 				{
 					if($fetchOne)
 					{
@@ -563,7 +563,7 @@ class Katharsis_Db5
 				break;
 
 			case self::FETCHMODE_ARRAY:
-				while($row = mysql_fetch_row($result))
+				while($row = mysqli_fetch_row($result))
 				{
 					if($fetchOne)
 					{
@@ -614,11 +614,11 @@ class KatharsisDb5_ResultSet
 		switch ($fetchmode)
 		{
 			case Katharsis_Db5::FETCHMODE_ASSOC:
-				return mysql_fetch_assoc($this->_resultSet);
+				return mysqli_fetch_assoc($this->_resultSet);
 				break;
 
 			case Katharsis_Db5::FETCHMODE_ARRAY:
-				return mysql_fetch_row($this->_resultSet);
+				return mysqli_fetch_row($this->_resultSet);
 				break;
 
 			default:

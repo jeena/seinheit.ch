@@ -14,7 +14,7 @@ class Page extends Katharsis_Model_Abstract
 		}
 
 		$sql = $this->_con->createStatement("SELECT id FROM page WHERE url = :url " . $activeTerm, array("url" => $url));
-		
+
 		if($result = $this->_con->fetchOne($sql)){
 			return $result['id'];
 		}
